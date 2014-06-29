@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>test out sliding</title>
+
+    <link href="css/styles.css" rel="stylesheet">
+    
+    <!-- required plugins -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.throttle.debounce.js"></script>
+    <script src="js/jquery.stacker.js"></script>
+    <script src="js/app.js"></script>    
+
+</head>
+
+<body>
+    
+    <div id="container">
+        
+        <div id="slide-1" class="slide">
+            
+            <div class="drag-functionality-area" id="pull-down-area" data-percent="0">
+            <header class="drag-area-title">
+            <a class="cancel" style="-webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">cancel</a>
+            <span class="action-handle"><i></i><strong></strong></span>
+            </header>
+            <hgroup class="ff-icon-before">
+            <h1>Bump to receive</h1>
+            <h3>To trade cards, 'bump' phones with a friend who already has them</h3>
+            </hgroup>
+            </div>
+
+            <div class="view-container">
+            <header class="app-header">
+
+            <a class="menu-btn" hm-touch="appMenuBtn()" href=""><i></i></a>
+            <h1 class="ng-binding">Chroma</h1>
+
+            </header>
+
+            <div id="scroller">
+            <div class="stacker-cntnr">
+
+            <!-- ngRepeat: card in cards --><article ng-repeat="card in cards" ng-switch="card.unlocked === true" style="top: 0px; left: 0px;">
+
+            <!-- ngSwitchWhen: true --><a ng-switch-when="true" data-level-text="Mint" lazy-src="img/chroma/thumbs/0_1.jpg" class="unlocked loaded" ng-href="#/app/chroma/cards/0" href="#/app/chroma/cards/0" style="background-image: url(img/chroma/thumbs/0_1.jpg);">
+
+            <footer class="ng-binding">
+            Adam Bull
+            <span class="level" data-level-text="Mint"></span>
+            </footer>
+            </a>
+
+            <!-- ngSwitchWhen: false -->
+
+            </article><!-- end ngRepeat: card in cards --><article ng-repeat="card in cards" ng-switch="card.unlocked === true" style="top: 196px; left: 0px;">
+
+            <!-- ngSwitchWhen: true --><a ng-switch-when="true" data-level-text="Mint" lazy-src="img/chroma/thumbs/1_1.jpg" class="unlocked loaded" ng-href="#/app/chroma/cards/1" href="#/app/chroma/cards/1" style="background-image: url(img/chroma/thumbs/1_1.jpg);">
+
+            <footer class="ng-binding">
+            Chengwu Guo
+            <span class="level" data-level-text="Mint"></span>
+            </footer>
+            </a>
+
+            <!-- ngSwitchWhen: false -->
+
+            </article><!-- end ngRepeat: card in cards --><article ng-repeat="card in cards" ng-switch="card.unlocked === true" style="top: 392px; left: 0px;">
+
+            <!-- ngSwitchWhen: true --><a ng-switch-when="true" data-level-text="3rd hand" lazy-src="img/chroma/thumbs/2_3.jpg" class="unlocked loaded" ng-href="#/app/chroma/cards/2" href="#/app/chroma/cards/2" style="background-image: url(img/chroma/thumbs/2_3.jpg);">
+
+            <footer class="ng-binding">
+            Madeline Eastoe
+            <span class="level" data-level-text="3rd hand"></span>
+            </footer>
+            </a>
+
+            <!-- ngSwitchWhen: false -->
+
+            </article><!-- end ngRepeat: card in cards --><article ng-repeat="card in cards" ng-switch="card.unlocked === true" style="top: 0px; left: 140px;">
+
+            <!-- ngSwitchWhen: true --><a ng-switch-when="true" data-level-text="2nd hand" lazy-src="img/chroma/thumbs/3_2.jpg" class="unlocked loaded" ng-href="#/app/chroma/cards/3" href="#/app/chroma/cards/3" style="background-image: url(img/chroma/thumbs/3_2.jpg);">
+
+            <footer class="ng-binding">
+            Miwako Kubota
+            <span class="level" data-level-text="2nd hand"></span>
+            </footer>
+            </a>
+
+            <!-- ngSwitchWhen: false -->
+
+            </article><!-- end ngRepeat: card in cards --><article ng-repeat="card in cards" ng-switch="card.unlocked === true" style="top: 196px; left: 140px;">
+
+            <!-- ngSwitchWhen: true --><a ng-switch-when="true" data-level-text="4th hand" lazy-src="img/chroma/thumbs/4_4.jpg" class="unlocked loaded" ng-href="#/app/chroma/cards/4" href="#/app/chroma/cards/4" style="background-image: url(img/chroma/thumbs/4_4.jpg);">
+
+            <footer class="ng-binding">
+            Lana Jones
+            <span class="level" data-level-text="4th hand"></span>
+            </footer>
+            </a>
+
+            <!-- ngSwitchWhen: false -->
+
+            </article><!-- end ngRepeat: card in cards --><article ng-repeat="card in cards" ng-switch="card.unlocked === true" style="top: 392px; left: 140px;">
+
+            <!-- ngSwitchWhen: true -->
+
+            <!-- ngSwitchWhen: false --><a ng-switch-when="false" lazy-src="img/chroma/thumbs/5.jpg" class="loaded" ng-href="#/app/chroma/cards/5" href="#/app/chroma/cards/5" style="background-image: url(img/chroma/thumbs/5.jpg);">
+
+            <footer class="ng-binding">Amber Scott</footer>
+            </a>
+
+            </article><!-- end ngRepeat: card in cards --><article ng-repeat="card in cards" ng-switch="card.unlocked === true" style="top: 0px; left: 280px;">
+
+            <!-- ngSwitchWhen: true -->
+
+            <!-- ngSwitchWhen: false --><a ng-switch-when="false" lazy-src="img/chroma/thumbs/6.jpg" class="loaded" ng-href="#/app/chroma/cards/6" href="#/app/chroma/cards/6" style="background-image: url(img/chroma/thumbs/6.jpg);">
+
+            <footer class="ng-binding">Daniel Gaudiello</footer>
+            </a>
+
+            </article><!-- end ngRepeat: card in cards --><article ng-repeat="card in cards" ng-switch="card.unlocked === true" style="top: 196px; left: 280px;">
+
+            <!-- ngSwitchWhen: true -->
+
+            <!-- ngSwitchWhen: false --><a ng-switch-when="false" lazy-src="img/chroma/thumbs/7.jpg" class="loaded" ng-href="#/app/chroma/cards/7" href="#/app/chroma/cards/7" style="background-image: url(img/chroma/thumbs/7.jpg);">
+
+            <footer class="ng-binding">Leanne Stojmenov</footer>
+            </a>
+
+            </article><!-- end ngRepeat: card in cards --><article ng-repeat="card in cards" ng-switch="card.unlocked === true" style="top: 392px; left: 280px;">
+
+            <!-- ngSwitchWhen: true -->
+
+            <!-- ngSwitchWhen: false --><a ng-switch-when="false" lazy-src="img/chroma/thumbs/8.jpg" class="loaded" ng-href="#/app/chroma/cards/8" href="#/app/chroma/cards/8" style="background-image: url(img/chroma/thumbs/8.jpg);">
+
+            <footer class="ng-binding">Ty King-Wall</footer>
+            </a>
+
+            </article><!-- end ngRepeat: card in cards -->
+
+            </div>
+            </div>
+            <a href="" class="share-mode-btn" ng-click="enablePullerMode('down')"></a>
+            </div>
+        
+
+        </div>
+                
+        <div class="slide" id="slide-2">
+            
+
+            <hgroup class="drag-functionality-area" id="pull-up-area">
+
+            <div class="missing">
+
+            <hgroup class="ff-icon-before">
+            <h1>You don't yet have this card</h1>
+            <h3>To get it, find someone who owns it, and bump phones with them</h3>
+            </hgroup>
+
+            <header class="drag-area-title">
+            <a class="cancel">cancel</a>
+            <span class="action-handle"><i></i><strong></strong></span>
+            </header>
+
+            </div>
+
+            <div class="normal">
+
+            <hgroup class="ff-icon-before">
+            <h1>Bump to send</h1>
+            <h3>To trade cards, 'bump' phones with a friend who wants them</h3>
+            </hgroup>
+
+            <header class="drag-area-title">
+            <a class="cancel">cancel</a>
+            <span class="action-handle"><i></i><strong></strong></span>
+            </header>
+
+            </div>
+
+            </hgroup>
+
+
+            <div class="view-container fourth-hand">
+
+            <header class="app-header">
+            <a class="ff-icon back-btn" hm-touch="goBack()"></a>
+            </header>
+
+            <div id="bg-cardstack">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            </div>
+
+            <ul>
+            <!-- ngRepeat: card in cards --><li>
+
+            <h1 class="ng-binding">Miwako Kubota</h1>
+
+            <!-- When a card is owned: -->
+            <!-- ngSwitchWhen: true --><div class="card-faces" ng-switch-when="true">
+
+            <div class="front-face loaded" lazy-src="img/chroma/full/3_2.jpg" style="background-image: url(img/chroma/full/3_2.jpg);">
+            <header class="ng-binding">
+            <strong class="ng-binding">second-hand</strong> - Shared with you by A Brown Cow
+            </header>
+            <div class="corner-fold" ng-click="card.detailMode = !card.detailMode">
+            <i class="ff-icon"></i>
+            </div>
+            </div>
+
+            <div class="back-face">
+            <header class="ng-binding">
+            <strong class="ng-binding">second-hand</strong> - Shared with you by A Brown Cow
+            </header>
+            <div class="corner-fold" ng-click="card.detailMode = !card.detailMode">
+            <i class="ff-icon"></i>
+            </div>
+            <div class="card-content">
+            mooo goes the cow
+            </div>
+            </div>
+
+            </div>
+
+            <!-- When a card is NOT owned: -->
+            <!-- ngSwitchWhen: false -->
+
+            </li><!-- end ngRepeat: card in cards --><li>
+
+            <h1 class="ng-binding">Lana Jones</h1>
+
+            <!-- When a card is owned: -->
+            <!-- ngSwitchWhen: true --><div class="card-faces" ng-switch-when="true">
+
+            <div class="front-face loaded" lazy-src="img/chroma/full/4_4.jpg" style="background-image: url(img/chroma/full/4_4.jpg);">
+            <header class="ng-binding">
+            <strong class="ng-binding">fourth-hand</strong> - Shared with you by Tim Paul
+            </header>
+            <div class="corner-fold" ng-click="card.detailMode = !card.detailMode">
+            <i class="ff-icon"></i>
+            </div>
+            </div>
+
+            <div class="back-face">
+            <header class="ng-binding">
+            <strong class="ng-binding">fourth-hand</strong> - Shared with you by Tim Paul
+            </header>
+            <div class="corner-fold" ng-click="card.detailMode = !card.detailMode">
+            <i class="ff-icon"></i>
+            </div>
+            <div class="card-content">
+            mooo goes the cow
+            </div>
+            </div>
+
+            </div>
+
+            <!-- When a card is NOT owned: -->
+            <!-- ngSwitchWhen: false -->
+
+            </li><!-- end ngRepeat: card in cards --><li>
+
+            <h1 class="ng-binding">Amber Scott</h1>
+
+            <!-- When a card is owned: -->
+            <!-- ngSwitchWhen: true -->
+
+            <!-- When a card is NOT owned: -->
+            <!-- ngSwitchWhen: false --><div class="card-faces" ng-switch-when="false">
+
+            <div class="front-face loaded" lazy-src="img/chroma/full/5.jpg" style="background-image: url(img/chroma/full/5.jpg);">
+            <header>
+            <strong>Locked</strong> - Card not yet owned
+            </header>
+            <div class="corner-fold" ng-click="card.detailMode = !card.detailMode">
+            <i class="ff-icon"></i>
+            </div>                              
+            </div>
+
+            <div class="back-face">
+            <header>
+            <strong>Locked</strong> - Card not yet owned
+            </header>
+            <div class="corner-fold" ng-click="card.detailMode = !card.detailMode">
+            <i class="ff-icon"></i>
+            </div>
+            <div class="card-content">
+            mooo goes the cow
+            </div>
+            </div>
+
+            </div>
+
+            </li><!-- end ngRepeat: card in cards -->
+            </ul>
+
+            <a href="" class="share-mode-btn" ng-click="enablePullerMode('up')"></a>
+
+            </div>
+
+
+        </div>
+    
+    </div>
+
+</body>
+</html>

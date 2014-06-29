@@ -1,0 +1,2101 @@
+
+/*==============================================================================================================
+
+	__________                            _________                        _________ __          _____  _____ 
+	\______   \____    ______ ____       /   _____/____    ______ ______  /   _____//  |_ __ ___/ ____\/ ____\
+	 |    |  _|__  \  /  ___// __ \      \_____  \\__  \  /  ___//  ___/  \_____  \\   __\  |  \   __\\   __\ 
+	 |    |   \/ __ \_\___ \\  ___/      /        \/ __ \_\___ \ \___ \   /        \|  | |  |  /|  |   |  |   
+	 |______  (____  /____  >\___  > /\ /_______  (____  /____  >____  > /_______  /|__| |____/ |__|   |__|   
+			\/     \/     \/     \/  )/         \/     \/     \/     \/          \/                           
+
+
+	Base sass styles: opinionated defaults
+
+
+=================================================================================================================
+
+ /*
+ * Import Sass add-ons
+ */
+
+@import "compass";
+@import "normalize";
+@import "animation";
+@import "keyframes";
+
+
+/*
+ * Settings for compass vendor prefixing.
+ */
+
+$experimental-support-for-mozilla : false;
+$experimental-support-for-webkit : true;
+$support-for-original-webkit-gradients : true;
+$experimental-support-for-opera : false;
+$experimental-support-for-microsoft : false;
+$experimental-support-for-khtml : false;
+
+
+/*
+ * Define Global SASS variables.
+ */
+
+$light-off-black: #3b3b3b;
+$off-black: #262626;
+$dark-off-white: #ebebeb;
+$off-white: #f7f7f7;
+
+$nice-green: #7cb313;
+
+$google-green: #0F9D58;
+$google-red: #DB4437;
+$google-yellow: #ffc001;
+$google-blue: #4285F4;
+
+$ballet-teal: #02887d;
+$quantum-fab-btn-color: #eeff41;
+
+$mid-grey: #676767;
+
+$app-dock-height: 55px;
+$window-title-bar-height: 52px;
+
+$font-factor: 2.5;
+$space-factor: 3;
+
+$gutter: 18px;
+$left-app-menu-width: (840px/$space-factor);
+
+
+
+
+/*
+ * Setup SASS placeholders.
+ */
+
+%css-ellipsis {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+
+/*
+ * Over-ride some default ionic styles ...
+ */
+
+.scroll, .scroll-view {
+	height: 100%;
+}
+
+.slide-left-right-ios7 > .ng-enter, 
+.slide-left-right-ios7.ng-enter, 
+.slide-left-right-ios7 > .ng-leave, 
+.slide-left-right-ios7.ng-leave, 
+.slide-right-left-ios7.reverse > .ng-enter, 
+.slide-right-left-ios7.reverse.ng-enter, 
+.slide-right-left-ios7.reverse > .ng-leave, 
+.slide-right-left-ios7.reverse.ng-leave,
+
+.slide-left-right-ios7.reverse > .ng-enter, 
+.slide-left-right-ios7.reverse.ng-enter, 
+.slide-left-right-ios7.reverse > .ng-leave, 
+.slide-left-right-ios7.reverse.ng-leave, 
+.slide-right-left-ios7 > .ng-enter, 
+.slide-right-left-ios7.ng-enter, 
+.slide-right-left-ios7 > .ng-leave, 
+.slide-right-left-ios7.ng-leave,
+
+.slide-left-right-ios7 > .ng-enter:not(.bar), 
+.slide-left-right-ios7.ng-enter:not(.bar), 
+.slide-left-right-ios7 > .ng-leave:not(.bar), 
+.slide-left-right-ios7.ng-leave:not(.bar), 
+.slide-right-left-ios7.reverse > .ng-enter:not(.bar), 
+.slide-right-left-ios7.reverse.ng-enter:not(.bar), 
+.slide-right-left-ios7.reverse > .ng-leave:not(.bar), 
+.slide-right-left-ios7.reverse.ng-leave:not(.bar)
+{
+	border: none;
+}
+
+// .slide-left-right-ios7 > .ng-leave.ng-leave-active, 
+// .slide-left-right-ios7.ng-leave.ng-leave-active, 
+// .slide-right-left-ios7.reverse > .ng-leave.ng-leave-active, 
+// .slide-right-left-ios7.reverse.ng-leave.ng-leave-active 
+// {
+// 	/* OLD content ACTIVELY sliding OUT to the LEFT */
+// 	-webkit-transform: translate3d(-10%, 0, 0);
+// 	transform: translate3d(-10%, 0, 0); 
+// }
+
+// .slide-left-right-ios7.reverse > .ng-leave.ng-leave-active, 
+// .slide-left-right-ios7.reverse.ng-leave.ng-leave-active, 
+// .slide-right-left-ios7 > .ng-leave.ng-leave-active, 
+// .slide-right-left-ios7.ng-leave.ng-leave-active 
+// {
+// 	/* OLD content ACTIVELY sliding OUT to the RIGHT */
+// 	-webkit-transform: translate3d(10%, 0, 0);
+// 	transform: translate3d(10%, 0, 0); 
+// }
+
+// .slide-left-right-ios7 > .ng-enter, 
+// .slide-left-right-ios7.ng-enter, 
+// .slide-left-right-ios7 > .ng-leave, 
+// .slide-left-right-ios7.ng-leave, 
+// .slide-right-left-ios7.reverse > .ng-enter, 
+// .slide-right-left-ios7.reverse.ng-enter, 
+// .slide-right-left-ios7.reverse > .ng-leave, 
+// .slide-right-left-ios7.reverse.ng-leave 
+// {
+// 	-webkit-transition: -webkit-transform ease-in-out 300ms 0ms;
+// 	transition: transform ease-in-out 300ms 0ms;
+// }
+
+// .slide-left-right-ios7.reverse > .ng-enter, 
+// .slide-left-right-ios7.reverse.ng-enter, 
+// .slide-left-right-ios7.reverse > .ng-leave, 
+// .slide-left-right-ios7.reverse.ng-leave, 
+// .slide-right-left-ios7 > .ng-enter, 
+// .slide-right-left-ios7.ng-enter, 
+// .slide-right-left-ios7 > .ng-leave, .slide-right-left-ios7.ng-leave 
+// {
+// 	-webkit-transition: -webkit-transform ease-in-out 300ms 0ms;
+// 	transition: transform ease-in-out 300ms 0ms;
+// }
+
+// // when sliding thru tabs - make sure the menu stays hidden
+// // (can cause flickering)
+// .slide-left-right-ios7.ng-enter,
+// .slide-left-right-ios7.ng-leave,
+// .slide-left-right-ios7 > .ng-leave, 
+// .slide-left-right-ios7 > .ng-enter,
+// .ng-enter, 
+// .ng-leave {
+	
+// 	.tabs {
+// 		display: none;
+// 	}
+
+// }
+
+
+/*
+ * Begin custom app styles
+ */
+
+// Available fonts + weights:
+// Roboto:
+// 	300italic,
+// 	400italic,
+// 	400,
+// 	700,
+// 	800,
+// 	600,
+// 	300
+// Vollkorn:
+// 	400,
+// 	700
+
+*, *::before, *::after {
+	@include box-sizing(border-box);
+}
+
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;	
+	overflow: hidden;
+	font-family: 'Roboto', san-serif;
+	font-weight: 300;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-weight: 400;
+	font-family: 'Roboto', san-serif;
+}
+
+body {
+	
+	background: darken(silver, 15%);
+
+}
+
+/*
+ * QUANTUM PAPER CSS ANIMATION EASING PRESETS
+
+*	Fast Out, Slow In - default
+		cubic-bezier(0.0, 0.0, 0.2, 1)
+
+*	Fast Out, Linear In - exiting	
+		cubic-bezier(0.4, 0.0, 1, 1)
+	
+*	Linear Out, Slow In - entering
+		cubic-bezier(0.0, 0.0, 0.2, 1)
+
+*/
+
+$quantum-easing-default: cubic-bezier(0.0, 0.0, 0.2, 1);
+$quantum-easing-exiting: cubic-bezier(0.4, 0.0, 1, 1);
+$quantum-easing-entering: cubic-bezier(0.0, 0.0, 0.2, 1);
+
+$ease-in-out-quart: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+$ease-in-out-circ: cubic-bezier(0.785, 0.135, 0.150, 0.860);
+
+.entry-page {
+
+}
+
+$signin-btn-height: 65px;
+$signin-btn-spacing: 22px;
+
+#signin-btn {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background: $google-red;
+	line-height: $signin-btn-height;
+	height: $signin-btn-height;
+	width: 100%;	
+	font-weight: 500;
+	font-size: 18px;
+	padding: 0 $signin-btn-spacing 0 0;
+	text-decoration: none;
+	color: white;
+
+
+	&:before {
+		content: "\e613";
+		float: left;
+		margin: 0;
+		height: 100%;
+		padding: 22px $signin-btn-spacing 0;
+		margin-right: $signin-btn-spacing;
+		font-size: 135%;
+		border-right: 1px solid darken($google-red, 8%);
+	}
+}
+
+
+/*
+#blackout {
+
+	position: absolute;
+	top: 0; left: 0; 
+	right: 0; bottom: 0;
+	background: $off-black;
+	z-index: 2;
+	opacity: 0;
+	
+	transform: translate3d(0%,0,0) scale3d(1,1,1);
+	-webkit-transform: translate3d(0%,0,0) scale3d(1,1,1);
+
+	pointer-events: none;
+	@include user-select(none); 
+	
+	@include transition-property( opacity );
+	@include transition-duration( .35s );
+	@include transition-delay( 0 );
+	@include transition-timing-function( ease-in-out ); 
+}
+*/
+
+#app-container {
+	
+	display: block;
+
+	height: 100%;
+	position: relative;
+	z-index: 1;
+
+	-webkit-perspective: 1000px;
+	perspective: 1000px;
+
+	> .view {
+		
+		// over-ride some defaults in the ion-tabs directive...
+		overflow: visible;
+		bottom: auto;
+		right: auto;
+		background: transparent;
+
+		-webkit-transform: translate3d(0,0,0);
+		-webkit-transition: -webkit-transform .35s $ease-in-out-circ;
+
+		transform: translate3d(0,0,0);
+		transition: transform .35s $ease-in-out-circ; 
+		
+		&.dont-animate {
+
+			-webkit-transition: none;
+			transition: none;
+
+			#blackout {
+				-webkit-transition: none;
+				transition: none;
+			}
+		}
+
+		.pane {
+			background: transparent;
+		}
+
+		&.menu-open {
+
+			-webkit-transform: translate3d($left-app-menu-width, 0, 0);
+			transform: translate3d($left-app-menu-width, 0, 0);
+			
+			puller {
+				pointer-events: none;
+				@include user-select(none); 
+			}
+
+			#blackout {
+				opacity: .8;
+			}
+
+			.tabs {
+				box-shadow: 0 0 8px rgba(0,0,0,.2);
+			}
+
+		}
+
+		&.ng-animate {
+
+		}
+
+	}	
+}
+
+$app-header-height: 55px;
+
+.app-header {
+
+	position: absolute;
+	z-index: 5;
+	top: 0;
+	width: 100%;
+	height: $app-header-height;
+	white-space: nowrap;	
+	
+	// prevent paint flicker
+	@include translate3d( 0,0,0 );
+
+	a {
+		float: left;
+		padding: 14px 10px 5px 20px;
+
+		&.menu-btn {
+
+			&:before {
+				content: "";
+				float: left;
+				width: 30px;
+				height: 30px;
+				background: url(../img/collector-cards-logo-tiny.svg) center center no-repeat;
+				background-size: 100% 100%;
+			}
+
+			&.active:before {
+				background: yellowgreen;
+			}
+			
+			$menu-slats-height: 4px;
+			$menu-slats-width: 7px;
+
+			> i {
+				position: absolute;
+				top: calc(50% - #{$menu-slats-height * 2});
+				left: 0;
+				width: $menu-slats-width;
+				height: $menu-slats-height;
+				background: white;
+
+				&:before {
+					content: "";
+					position: absolute;
+					left: 0;
+					top: 7px;
+					width: $menu-slats-width;
+					height: $menu-slats-height;
+					background: white;
+				}
+
+				&:after {
+					content: "";
+					position: absolute;
+					left: 0;
+					top: 14px;
+					width: $menu-slats-width;
+					height: $menu-slats-height;
+					background: white;
+				}
+			}
+		}
+
+	}
+	
+	h1 {
+		text-align: left;
+		margin: 19px 0 0 0;
+		color: white;
+		font-weight: 400;
+		font-size: 23px;
+		letter-spacing: -.4px;
+		line-height: 1;
+
+		@extend %css-ellipsis;
+	}
+}
+
+.share-mode-btn {
+	
+	// display: none;
+
+	position: absolute;
+	bottom: $gutter;
+	right: $gutter;
+	font-size: 60px;
+	line-height: 60px;
+	padding: 0;
+	text-align: center;
+	text-decoration: none;
+	color: white;
+	text-shadow: 0 (8px/$space-factor) (18px/$space-factor) rgba(0,0,0,.28);
+	
+	// prevent webkit/blink paint flicker
+	@include translate3d( 0,0,0 );
+
+	@include transition-property( color, text-shadow );
+	@include transition-duration( .5s );
+
+	&:before {
+		font-family: 'collecticons';
+		font-weight: 400;
+		content: "\e616";
+	}
+}
+
+.cards-page {
+
+	.app-header {
+
+		&:before {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: $app-dock-height + 15px;
+			top: 0;
+			z-index: -1;
+
+			@include background-image(linear-gradient(top, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 98%));
+		}
+	}
+
+	.view-container {
+		background: $off-black;
+		box-shadow: 0 1px 0 $off-black;
+	}
+
+}
+
+.details-page {
+	
+	.app-header {
+		background: transparent;
+	}
+
+	.view-container {
+		background: darken(silver, 15%);
+	}
+}
+
+.view-container {
+	height: 100%;
+	background: white;
+	position: relative;
+
+	@include transition-property( transform );
+	@include transition-duration( 0s );
+	@include transition-timing-function( ease-in-out ); 
+}
+
+puller {
+
+	&.puller-mode {
+		
+		.drag-functionality-area:after {
+			opacity: 0;
+		}
+
+		.cancel {
+			display: block;
+		}
+		
+		.action-handle {
+			
+			color: darken($dark-off-white, 18%);
+			font-weight: 400;
+			
+			&:after {
+				content: "mode" !important;
+			}
+			
+			i {
+				color: darken($dark-off-white, 13%);
+				@include simple-transform($rotate: 0deg);
+				
+				&:after {
+					box-shadow: 0 0 0 1.1px darken($dark-off-white, 13%);
+				}
+			}
+
+			strong {
+				color: inherit;
+				font-weight: 400;
+			}
+		}
+		
+		> hgroup {
+			display: block;
+		}
+
+		#pull-down-area {
+			.action-handle {
+				strong {
+					&:before {
+						content: "Card receive " !important;
+					}
+				}
+			}
+		}
+		#pull-up-area {
+			.action-handle {
+				strong {
+					&:before {
+						content: "Card send " !important;
+					}
+				}
+			}
+		}
+
+		.view-container {
+			article {
+				pointer-events: none;
+				@include user-select(none); 
+			}
+		}	
+
+		[data-percent="100"] {
+			
+			.action-handle {
+				
+				i {
+					@include simple-transform($rotate: 0deg);
+				}
+			}
+		}		
+	}
+
+	&.animate {
+	
+		.view-container {
+			@include transition-duration( .2s );
+		}
+	
+		#pull-down-area {
+			&:before {
+				opacity: 0;
+			}
+		}
+	}
+}
+
+
+$drag-title-height: 160px / $space-factor;
+
+/*
+ * App home screen styles...
+ */
+
+.drag-functionality-area {
+
+	position: absolute;
+	width: 100%;
+	height: 60%;
+	padding: $gutter;
+	color: $light-off-black;
+	background: $off-white;
+	
+	&:after {
+		content: "";
+		width: 0;
+		height: 5px;
+		position: absolute;
+		background: $off-black;
+		top: 0;
+		left: 0;
+
+		@include transition-property( width, opacity );
+		@include transition-duration( .1s );
+		@include transition-delay( 0 );
+		@include transition-timing-function( ease-in-out ); 
+	}
+
+	.drag-area-title {
+		background: white;
+		position: absolute;
+		top: 0; 
+		left: 0px;
+		width: 100%;
+		height: $drag-title-height;
+		padding: 0 0 0 ($gutter + 7px);
+		border-bottom: 1px solid $dark-off-white;
+	}
+
+	.cancel {
+		float: right;
+		position: relative;
+		z-index: 1;
+		padding: 0 ($gutter + 9px);
+		line-height: $drag-title-height;
+		font-size: 14px;
+		font-weight: 500;
+		text-transform: uppercase;
+		cursor: pointer;
+		display: none;
+		color: $ballet-teal;
+	}
+
+	.action-handle {
+		display: block;
+		font-size: 14px;
+		line-height: $drag-title-height;
+		white-space: nowrap;
+		padding: 0 0 0 (80px / $space-factor);
+		position: relative;
+		font-weight: 400;
+		
+		> i {
+			
+			position: absolute;
+			left: 0;
+			top: 19px;
+			width: 44px / $space-factor;
+			height: 44px / $space-factor;
+			font-style: normal;
+			color: $light-off-black;
+
+			&:before {
+				font-family: 'collecticons';
+				content: "\e604";
+				position: absolute;
+				top: 0.5px;
+				left: 0.5px;
+				height: 100%;				
+				font-size: 14px;
+				line-height: 1;
+				
+			}
+
+			&:after {
+				content: "";
+				position: absolute;
+				top: 0;
+				width: 100%;
+				height: 44px / $space-factor;
+				border-radius: 45px / $space-factor / 2;
+				box-shadow: 0 0 0 1.1px $light-off-black;
+			}
+			
+			@include experimental( transform-origin, center center);
+			@include simple-transform($rotate: 90deg);
+
+			@include transition-property( transform );
+			@include transition-duration( .3s );
+			@include transition-timing-function( ease-in-out );
+		}
+
+		strong {
+			font-weight: 700;
+		}
+	}
+	
+	hgroup {
+		
+		// display: none;
+		margin-top: $drag-title-height + 6px;
+		padding: 0 (212px / $space-factor + 42) 0 0;
+		text-align: right;
+		position: relative;
+
+		&:before {
+			content: "\e61c";
+			text-align: center;
+			font-size: 34px;
+			line-height: 208px / $space-factor;
+			position: absolute;
+			top: 1px;
+			right: 11px;
+			width: 212px / $space-factor;
+			height: 212px / $space-factor;
+			border-radius: 212px / 2 / $space-factor;
+			box-shadow: 0 0 0 1.1px darken($dark-off-white, 4%);
+		}
+	}
+
+	h1 {
+		font-size: 22px;
+		letter-spacing: -.4px;
+		font-weight: 500;
+		margin: 0 0 10px;
+		color: inherit;
+	}
+
+	h3 {
+		font-size: 13px;
+		line-height: 1.4;
+		margin: 0;
+		color: inherit;
+	}
+
+	$step: 10;
+	$loops: round(100 / $step);
+
+	@for $i from 0 through $loops {
+		&[data-percent="#{$i * $step}"] {
+			&:after {
+				width: $i * 10%;
+			}
+		}
+	}
+
+	&[data-percent="100"] {
+		&:before {
+			transition-delay: 0, .5s;
+			opacity: 0;
+		}
+		.action-handle {
+			
+			i {
+				@include simple-transform($rotate: -90deg);
+			}
+
+			strong:before {
+				content: "Release " !important;
+			}
+		}
+	}
+}
+
+
+#pull-down-area {
+	
+	top: 0; left: 0;
+	overflow: hidden;
+		
+	.cancel {
+		top: 0; right: 0;
+	}
+	
+	.action-handle {
+
+		&:after {
+			content: "to receive cards"
+		}
+
+		strong {
+			&:before {
+				content: "Pull down "
+			}
+		}
+	}
+	
+	h1 {
+		margin-top: 32px;
+	}
+
+	h3 {
+
+	}
+	
+}
+
+#scroller {
+	
+	height: 100%;
+	position: relative;
+
+	.stacker-cntnr {
+		height: 100%;
+	}
+
+	article {
+
+		position: absolute;
+		top: 0;
+		width: 140px;
+		margin: 0;
+		overflow: hidden;
+		background: $light-off-black;
+		border-top: 1px solid transparent;
+		border-right: 1px solid transparent;
+		border-color: $off-black;
+		
+		// this seems to cause alot of jank, sadly...
+		// border-radius: 4px;
+		
+		// @TODO:
+		// Android pre-4.4 webview doesn't support the calc property...
+		// height: 220px;
+		height: 33.3%;
+		// height: calc(33.3333% - .2px);
+
+		a {
+			display: block;
+			height: 100%;
+			text-decoration: none;
+			background-position: center center;
+			background-size: cover;
+			// background-size: auto 100%;
+			background-repeat: no-repeat;
+			
+			opacity: 0;
+			@include transition-property( opacity );
+			@include transition-duration( .5s );
+			@include transition-timing-function( ease-in-out );
+			
+			&.unlocked {
+
+				footer {
+					// text-shadow: 0 1px 0 rgba(0,0,0,.2);
+					padding-top: 40px;
+					color: white;
+					
+					// background: rgba(0,0,0,.45);
+					@include background-image(linear-gradient(bottom, rgba(0,0,0,.45) 0%, rgba(0,0,0,0) 100%));
+					
+					&:before {
+						display: none;
+					}
+
+					span {
+						&:after {
+							content: attr(data-level-text);
+						}
+					}
+				}
+			}
+
+			&.loaded {
+				opacity: 1;
+			}
+			&.active {
+				opacity: .4;
+				@include transition-duration( 0s );
+			}
+
+			&[data-level-text="Limited edition"] {
+				
+				// box-shadow: inset 0 0 0 5px gold;
+				position: relative;
+
+				&:before {
+					// CSS TRIANGLE
+					content: "";
+					position: absolute;
+					top: -40px;
+					right: -40px;
+					border: 40px solid transparent;
+					border-left-color: $quantum-fab-btn-color;
+
+					@include simple-transform($rotate: -45deg);
+				}
+
+				&:after {
+					content: "\e608";
+					font-family: "collecticons";
+					position: absolute;
+					font-size: 17px;
+					top: 7px;
+					right: 7px;
+					color: darken($quantum-fab-btn-color, 35%);
+				}
+			}
+		}
+
+		footer {
+			position: absolute;
+			bottom: 0;
+			left: 0; right: 0;
+			margin: 0;
+			padding: 15px 15px 15px;
+			color: rgba(255,255,255,.6);
+			font-weight: 500;
+			font-size: 14px;
+			line-height: 1.1;
+			text-transform: capitalize;
+
+			@extend %css-ellipsis;
+			
+
+			&:before {
+				content: "\e606";
+				font-family: 'collecticons';
+				display: inline-block;
+				vertical-align: top;
+				margin: 1px 6px 0 0;
+				color: rgba(255,255,255,.3);
+			}
+
+			span.level {
+				display: block;
+				font-weight: 400;
+				font-size: 12px;
+				margin: 4px 0 0 0;
+				text-transform: none;
+
+				@extend %css-ellipsis;
+			}
+			
+		}
+	}
+}
+
+
+pullopen {
+	display: block;
+	height: 100%;
+	width: 8px;
+	position: absolute;
+	z-index: 1;
+	top: 0; left: 0;
+	cursor: text;
+}
+
+.menu-open pullopen {
+	display: none;
+}
+
+.tabs {
+	
+	// over-ride some defaults in the ion-tabs directive...
+	display: block;
+	bottom: auto;
+	width: $left-app-menu-width;
+	height: 100%;	
+	padding: 0;
+	border: none;
+	background: $dark-off-white;
+	box-shadow: none;
+	z-index: 3;
+
+	-webkit-transform: translate3d(-100%, 0, 0);
+	transform: translate3d(-100%, 0, 0);
+	
+	@include transition-property( box-shadow );
+	@include transition-duration( .3s );
+	@include transition-timing-function( ease-in-out );
+
+	.tab-item {
+		display: none;
+		flex: auto;
+		max-width: 100%;
+		overflow: visible;
+		height: auto;	
+	}
+	
+	.scroll-view {
+		margin: 0;
+		overflow: visible;
+	}
+}
+
+closeMenuPuller {
+	display: block;
+	height: 100%;
+}
+
+#user-layer-area {
+	background: $ballet-teal;
+
+	h1, h2, h3, h4 {
+		margin: 0;
+	}
+}
+
+
+// Setup some sass vars for this area, (for easy editing)
+$barColor: white;
+$backColor: $ballet-teal;
+$step: 5;
+$loops: round(100 / $step);
+$increment: 360 / $loops;
+$half: round($loops / 2);
+$circ-viz-size: (360px/$space-factor);
+
+
+#user-layer-area {
+	padding: $gutter;
+	color: white;
+}
+
+#nextpack-countdown {
+	float: left;
+	position: relative;
+}
+
+.info-overlay {
+	width: $circ-viz-size;
+	height: $circ-viz-size;
+	position: relative;
+	line-height: 1;
+	padding: 21px 0 0 31px;
+	font-weight: 400;
+
+	h3 {
+		font-size: (32px / $font-factor);
+		color: inherit;
+		font-weight: inherit;
+		letter-spacing: -.5px;
+	}
+
+	.time-amount {
+		display: block;
+		font-size: (110px / $font-factor);
+		font-weight: 300;
+		letter-spacing: -3px;
+		margin: -2px 0 -1px -1px;
+
+		&:before {
+			content: attr(data-time);
+		}
+	}
+
+	.time-units {
+		font-size: (44px / $font-factor);
+		letter-spacing: -1px;
+	}
+}
+
+.circular-progress {
+	
+	position: absolute;
+	left: 0; top: 0;
+	width: $circ-viz-size;
+	height: $circ-viz-size;
+	
+	$skipped-offset: 8px; 
+
+	&:before {
+		content: "";
+		position: absolute;
+		top: $skipped-offset; bottom: $skipped-offset;
+		left: $skipped-offset; right: $skipped-offset;
+		border-radius: 50%;
+		box-shadow: 0 0 0 6px lighten($backColor, 4%);
+	}
+
+	> div {
+		height: 100%;
+		width: 100%;
+		border-radius: 50%;
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		&:after {
+			content: "";
+			position: absolute;
+			top: $skipped-offset; bottom: $skipped-offset;
+			left: $skipped-offset; right: $skipped-offset;
+			border-radius: 50%;
+			background: $backColor;
+		}
+	}
+	
+	@include create-transform($scale-x: -1.0); 
+}
+
+@for $i from 0 through $loops {
+	.progress[data-progress="#{$i * $step}"] {
+		@if $i < $half {
+			$nextdeg: 90deg + $increment * $i;
+			clip: rect(0px,$circ-viz-size,$circ-viz-size,($circ-viz-size*.5));
+			background-image: 
+				linear-gradient(90deg, $backColor 50%, transparent 50%, transparent) 
+				, linear-gradient($nextdeg, $barColor 50%, transparent 50%, transparent)
+			;
+		}
+		@else {
+			$nextdeg: -90deg + $increment * ($i - $half);
+			background-image: 
+				linear-gradient($nextdeg, $barColor 50%, transparent 50%, transparent)
+				, linear-gradient(270deg, $barColor 50%, transparent 50%, transparent)
+			;
+		}
+	}
+}
+
+#usercard-datapoints {
+	position: absolute;
+	top: 0; right: 0;
+	width: (380px / $space-factor);
+	padding: $gutter $gutter 0 0;
+
+	> .data {
+		
+		position: relative;
+		padding: 0 (83px/$space-factor) 0 0;
+	
+		&:before {
+			content: "\e604";
+			position: absolute;
+			top: 0;
+			right: 0;	
+			font-size: 17px;	
+			line-height: 1;
+
+			@include simple-transform($rotate: 90deg);
+		}
+
+		&:after {
+			content: attr(data-cards);
+			font-size: (103px/$font-factor);
+			line-height: .8;
+			letter-spacing: -3px;
+			display: block;
+			text-align: right;
+			margin: (20px/$space-factor) 0 0;
+		}
+
+		&.given {
+			
+			margin: (50px/$space-factor) 0 0;
+			padding-bottom: (20px/$space-factor) + (30px/$font-factor);
+			
+
+			&:before {
+				content: "\e604";
+				@include simple-transform($rotate: -90deg);
+			}
+
+			> span {
+
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: (83px/$space-factor);
+
+				&:before {
+					content: "cards given"
+				}
+			}
+
+			&:after {
+				margin: 0;
+			}
+		}
+
+		&.recieved {
+			
+			&:before {
+				top: 20px;
+			}
+			
+			> span {
+
+				&:before {
+					content: "cards recieved"
+				}
+			}
+		}
+
+		> span {
+			display: block;
+			font-size: (30px/$font-factor);
+			white-space: nowrap;
+			text-align: right;
+			font-weight: 400;
+			line-height: 1;
+		}
+	}
+}
+
+#account-details {
+	
+	clear: both;
+	padding: (80px/$space-factor) 0 0;
+	
+	> h2, h4 {
+		color: inherit;
+	}
+
+	h2 {
+		font-size: (60px/$font-factor);
+		font-weight: 500;
+		margin: 0;
+	}
+	h4 {
+		font-size: (33px/$font-factor);
+		font-weight: 400;
+		margin: (7px/$font-factor) 0 0;
+	}
+
+	#account-options {
+		display: none;
+	}
+}
+
+$bottom-menu-gutter: $gutter + 4;
+
+#collection-links {
+	
+	padding: $bottom-menu-gutter 0 0;
+	background: white;
+	box-shadow: -2px 0 3px rgba(0,0,0,.1);
+	
+	&.hide-collection-buttons {
+		display: none;
+
+		& + #app-collections {
+			h3 {
+				&:before {
+					content: "Available ";
+				}
+			}
+		}
+	}
+
+	> * {
+		padding: 0 $gutter;
+	}
+	
+	h3 {
+		margin: 0;
+		color: #858585;
+		font-size: 35px/$font-factor;
+		font-weight: 500;
+
+		&:after {
+			content: " cards colletion";
+			font-weight: 400;
+		}
+	}
+
+	a {
+		display: block;
+		position: relative;
+		text-decoration: none;
+		color: #555;
+		font-size: 44px/$font-factor;
+		line-height: 1.5;
+		font-weight: 500;
+		padding-top: (64px/$space-factor);
+		padding-bottom: (64px/$space-factor);
+		border-bottom: 1px solid $dark-off-white;
+
+		&:before {
+			content: "";
+			display: inline-block;
+			vertical-align: top;
+			margin: 1px (65px/$space-factor) 0 0;
+			font-family: 'collecticons';
+			font-weight: 400;
+			font-size: 140%;
+			line-height: 1;
+		}
+
+		&.all-cards:before {
+			content: "\e614";	
+		}
+
+		&.user-cards:before {
+			content: "\e615";	
+		}
+
+		&.about-collection:before {
+			content: "\e618";	
+		}
+
+		&.active {
+
+			&:after {
+				// CSS TRIANGLE
+				display: none;
+				content: "";
+				position: absolute;
+				z-index: 15;
+				top: (64px/$space-factor) + 5px;
+				right: -(32px/$space-factor) * 1.9;
+				border: (32px/$space-factor) solid transparent;
+				border-left-color: white;
+			}
+		}
+
+		&:last-of-type {
+			border: none;
+		}
+	}
+}
+
+#app-collections {
+	
+	padding: (58px/$space-factor) 0 $gutter;
+	
+	> * {
+		padding: 0 $gutter;
+	}
+	
+	h3 {
+		margin: 0;
+		color: #858585;
+		font-size: 35px/$font-factor;
+		font-weight: 400;
+
+		&:before {
+			content: "Other ";
+			font-weight: 500;
+		}
+	}
+
+	a {
+
+		display: block;
+		position: relative;
+		text-decoration: none;
+		color: #555;
+		font-size: 44px/$font-factor;
+		line-height: 1.5;
+		font-weight: 500;
+		padding-top: (64px/$space-factor);
+		padding-bottom: (64px/$space-factor);
+		border-bottom: 1px solid darken($dark-off-white, 6%);
+
+		&.active {
+			display: none;
+		}
+
+		&:last-of-type {
+			border: none;
+		}
+	}
+}
+
+
+.menu-open {
+	#collection-links {
+
+		a:after {
+			display: block;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+/*
+ * Styling up the card details page
+ *
+ */
+
+.details-page {
+	
+}
+
+#pull-up-area {
+
+	bottom: 0; left: 0;
+	overflow: hidden;
+
+	&:after {
+		top: auto;
+		bottom: 0;
+	}
+	
+	> div {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding: 0 $gutter $drag-title-height;
+		height: 180px;
+		
+		display: flex;
+		flex-direction: column;
+
+		-webkit-display: flex;
+		-webkit-flex-direction: column;
+	}
+
+	> .missing {
+
+		display: none;
+
+		hgroup {
+			padding-right: 110px;
+
+			&:before {
+			}
+
+			h1 {
+				font-size: 18px;
+				letter-spacing: -.5px;
+
+				@extend %css-ellipsis;
+			}
+		}
+	}
+
+	&.card-missing {
+		> .missing {
+			display: flex;
+			-webkit-display: flex;
+		}
+		> .normal {
+			display: none;
+		}
+	}
+
+	.drag-area-title {
+		top: auto;
+		bottom: 0;
+		border-bottom: none;
+		border-top: 1px solid #ebebeb;
+	}
+
+	hgroup {
+
+		margin: auto 0;
+
+		&:before {
+			right: 12px;
+		}
+	}
+	
+	.action-handle {
+
+		&:after {
+			content: "to send cards"
+		}
+		strong {
+			&:before {
+				content: "Pull up "
+			}
+		}
+
+		i {
+			@include simple-transform($rotate: -90deg);
+		}
+	}
+
+	h1 {
+
+	}
+
+	&[data-percent="100"] {
+		.action-handle {
+			
+			i {
+				@include simple-transform($rotate: 90deg);
+			}
+		}
+	}
+}
+
+puller {
+	&.animate {
+		.drag-functionality-area {
+			&:after {
+				display: none;
+			}
+		}
+	}
+	&.puller-mode {
+		#pull-up-area[data-percent="100"] {
+			.action-handle {
+				i {
+					@include simple-transform($rotate: 180deg);
+				}
+			}
+		}		
+	}
+}
+
+// do stuff when sliding inbetween states...
+.ng-animate {
+
+
+}
+
+
+.carousel, .carousel ul, .carousel li {
+    
+    min-height: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    position: relative;
+
+}
+
+$color-change-timing: .5s;
+
+.carousel {
+
+    overflow: hidden;
+    display: block;
+    
+    ul {
+    	
+    	overflow: hidden;
+        position: relative;
+
+        transform: translate3d(0%,0,0) scale3d(1,1,1);
+        -webkit-transform: translate3d(0%,0,0) scale3d(1,1,1);
+
+        &.animate {
+		    @include transition-property( transform );
+		    @include transition-duration( .3s );
+		    @include transition-timing-function( ease-in-out ); 
+		}
+    }
+
+    li {
+  
+        float: left;
+        overflow: hidden;
+		
+        h1 {
+            color: #fff;
+            position: absolute;
+            z-index: 6;
+            width: 100%;
+            height: $app-header-height + 15px;
+            padding: 16px 10px 20px 77px;
+            margin: 0;
+            text-transform: capitalize;
+            text-align: left;
+            color: white;
+            font-size: 24.5px;
+            letter-spacing: -.8px;
+            line-height: 1;
+
+            @extend %css-ellipsis;
+			
+			// prevents webkit flicker
+			// @include create-transform($trans-z: 0);
+
+			@include transition-property( color );
+			@include transition-duration( $color-change-timing );
+
+			// @include background-image(linear-gradient(top, rgba(0,0,0,.5) 0%, rgba(0,0,0,0) 98%));
+        }
+
+        img {
+        	display: block;
+        	width: 100%;
+        }
+    }
+}
+
+.card-faces {
+
+	height: 100%;
+
+	-webkit-perspective: 800px;
+	perspective: 800px;
+	
+	> div {
+		position: absolute;
+	}
+
+	&:before {
+		position: absolute;
+		height: 95%;
+		border-radius: 5px 5px 0 0;
+		content: "";
+		top: 65px;
+		right: 18px;
+		width: 96%;
+
+		@include simple-transform($rotate: 2.5deg);
+	}
+	
+	.corner-fold {
+		
+		position: absolute;
+		top: -1px;
+		right: 0;
+		width: 77px;
+		height: 67px;
+		border-radius: 0 0 0 6px; 
+		overflow: hidden;
+
+		&:before {
+			content: "";
+			width: 150%;
+			height: 150%;
+			background: #363636;
+			background-size: auto;
+			position: absolute;
+			bottom: 36%; left: 23%;
+
+			@include simple-transform($rotate: -49deg);
+		}
+
+		&:after {
+			content: "";
+			width: 85%;
+			height: 85%;
+			border-radius: 0 5px 0 0;
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			background: white;
+
+			@include simple-transform($rotate: 3deg);
+		}
+
+		i {
+
+			width: 150%;
+			height: 150%;
+			position: absolute;
+			z-index: 1;
+			border-radius: 0;
+			top: 29%; right: 22%;
+			background: gold;
+
+			@include simple-transform($rotate: 41deg);
+
+			@include transition-property( background-color );
+			@include transition-duration( $color-change-timing );
+
+			&:before {
+				content: "\e60e";
+				font-size: 19px;
+				line-height: 1;
+				display: block;
+				position: absolute;
+				top: 15px; right: calc(50% - 7px);
+
+				@include simple-transform($rotate: -41deg);
+			}
+		}
+	}
+
+	header {
+		padding: 8px 90px 9px 24px;
+		font-size: 33px / $font-factor;
+		letter-spacing: -.2px;
+		line-height: 1.2;
+		font-weight: 400;
+		color: rgba(255,255,255,.72);
+		text-shadow: 0 1px 0 rgba(0,0,0,.15);
+
+		@extend %css-ellipsis;
+
+		strong {
+			text-transform: capitalize;
+		}
+
+		@include transition-property( background-color );
+		@include transition-duration( $color-change-timing );
+	}
+}
+
+.backface-mode {
+	
+	.front-face {
+		@include create-transform($trans-z: 0, $rotate-z: -1.5deg, $rotate-y: -180deg ); 	
+	}
+	.back-face {
+		@include create-transform($trans-z: 0, $rotate-z: -1.5deg, $rotate-y: 0deg ); 
+	}
+
+}
+
+.back-face {
+	
+	bottom: -1%;
+	left: -2%;
+	width: 104.5%;
+
+	top: 200px / $space-factor;
+
+	@include create-transform($trans-z: 0, $rotate-z: -1.5deg, $rotate-y: 180deg ); 	
+	@include transform-style( preserve-3d );
+	@include backface-visibility( hidden ); 
+	@include transition-property( transform );
+	@include transition-duration( .5s);
+
+	.corner-fold {
+
+		top: 0;
+		right: auto;
+		// left: 10px;
+		border-radius: 0 0 6px 0; 
+	
+		&:before {
+			left: auto;
+			right: 12%;
+			background: #262525;
+			@include simple-transform($rotate: -42deg);
+		}
+
+		&:after {
+
+			border-radius: 0;
+			left: 25%;
+			bottom: auto;
+			top: -3px;
+
+			@include simple-transform($rotate: 2.5deg);
+		}
+
+		i {
+
+			right: auto;
+			left: 28%;
+			top: 39%;
+			background: white !important;
+
+			@include simple-transform($rotate: 48deg);
+
+			&:before {
+				content: "\e60e";
+				top: 15px; right: calc(50% - 7px);
+
+				@include simple-transform($rotate: -48deg);
+			}
+		}
+	}
+
+	header {
+		padding: 8px 24px 9px 90px;
+	}
+
+	.card-content {
+		padding: 60px ($gutter * 2.5) 0;
+	}
+
+}
+
+.front-face {
+	
+	// @ TODO: 
+	// VW + VH measurements are causing major jank atm...
+	bottom: -1%;
+	left: -2%;
+	width: 104.5%;
+
+	// bottom: 0;
+	// left: 0;
+	// width: 100%;
+
+	top: 200px / $space-factor;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	
+	// starts off hidden - and is made visible by my lazyload directive
+	opacity: 0;
+
+	// Masking to help make the face look like a card,
+	// Causes major performance issues in Android currently ...
+		// -webkit-mask: url(../img/corner-mask.svg) top right / 100% no-repeat;
+		// -webkit-mask: url(../img/corner-mask.png) top right / 100% no-repeat;
+
+	// @include create-transform($trans-z: 0, $rotate-z: -1.5deg ); 
+	@include create-transform($trans-z: 0, $rotate-z: -1.5deg, $rotate-y: 0deg ); 	
+
+	@include transform-style( preserve-3d );
+	@include backface-visibility( hidden ); 
+	@include transition-property( opacity, transform );
+	@include transition-duration( .5s );
+
+	&.loaded {
+		opacity: 1;
+	}
+}
+
+.hide-everything {
+	.front-face {
+		opacity: 0;
+		@include transition-duration( .2s, .5s );
+	}
+}
+
+
+.app-header .back-btn {
+	
+	padding-left: 6.3px;
+	padding-top: 13px;
+	text-decoration: none;
+	
+	@include transition-property( color );
+	@include transition-duration( $color-change-timing );
+
+	&:after {
+		content: "\e61b";
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 35px;
+		color: inherit;
+		text-decoration: none;
+	}
+
+	&:before {
+		content: "\e60a";
+		display: inline-block;
+		vertical-align: middle;
+		font-weight: 700;
+		font-size: 22px;
+		line-height: 1;
+		margin: 1px 4px 0 0;
+		color: inherit;
+		text-decoration: none;
+	}
+}
+
+
+@mixin card-grade-coloring( $grade-color, $text-tint ) {
+	.corner-fold {
+		&:after {
+			background: darken($grade-color, ($text-tint / 2));
+		}
+		i {
+			background: $grade-color;
+
+			&:before {
+				color: darken($grade-color, ($text-tint / 1.2));
+			}
+		}
+	}
+	.app-header .back-btn {
+		color: $grade-color;
+	}
+	.carousel h1 {
+		color: $grade-color;
+	}
+	.front-face header {
+		background: darken($grade-color, ($text-tint / 5));
+	}
+	.back-face {
+		background: $grade-color;
+
+		.corner-fold i:before {
+			color: darken($grade-color, ($text-tint / 5));
+		}
+	}
+	.card-faces {
+		&:before {
+			background: darken($grade-color, ($text-tint / 2));
+			// background: white
+		}
+	}
+}
+
+
+$mint-color: #e91e63;
+$second-hand-color: #973ecf;
+$third-hand-color: #4a65c8;
+$fourth-hand-color: #4299bc;
+$locked-color: $ballet-teal;
+
+.mint {
+	@include card-grade-coloring( $mint-color, 35% );
+	.card-faces .front-face header {
+		color: white;
+	}
+}
+
+.second-hand {
+	@include card-grade-coloring( $second-hand-color, 36% );
+}
+
+.third-hand {
+	@include card-grade-coloring( $third-hand-color, 35% );
+}
+
+.fourth-hand {
+	@include card-grade-coloring( $fourth-hand-color, 36% );
+}
+
+.locked {
+	@include card-grade-coloring( $locked-color, 19.5% );
+
+	.share-mode-btn {
+		color: rgba(0,0,0,.16);
+		text-shadow: none;
+		pointer-events: none;
+		-webkit-user-select: none;
+	}
+}
+
+#view-content {
+	height: 100%;
+	background: yellowgreen;
+}
+
+// #bg-cardstack {
+
+// 	overflow: hidden;
+// 	position: absolute;
+// 	width: 100%;
+// 	height: 100%;
+// 	background: #101010 url(../img/cards-stack-3x.png) center 14px no-repeat;
+// 	background-size: 100% auto;
+	
+// 	// prevents webkit flicker
+// 	// @include create-transform($trans-z: 0);
+
+// 	@include transition-property( background-color );
+// 	@include transition-duration( $color-change-timing );
+// }
+
+#bg-cardstack {
+
+	overflow: hidden;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #101010;
+
+	> i {
+		position: absolute;
+		width: 95%;
+		height: 95%;
+		border-radius: 7px 7px 0 0;
+
+		&:nth-of-type(1) {
+			top: 30px;
+			right: -10px;
+			background: #161616;
+			@include simple-transform($rotate: -2.2deg);
+		}
+
+		&:nth-of-type(2) {
+			top: 29px;
+			left: 0px;
+			background: #191919;
+			@include simple-transform($rotate: 2.2deg);
+		}
+
+		&:nth-of-type(3) {
+			top: 38px;
+			left: -5px;
+			background: #1d1d1d;
+			@include simple-transform($rotate: .8deg);
+		}
+
+		&:nth-of-type(4) {
+			top: 44px;
+			width: 98%;
+			left: 0;
+			background: #262525;
+			@include simple-transform($rotate: -.5deg);
+		}
+
+		&:nth-of-type(5) {
+			top: 49px;
+			width: 94%;
+			right: 8px;
+			background: #2a2a2a;
+			@include simple-transform($rotate: 2.5deg);
+		}
+
+		&:nth-of-type(6) {
+			top: 58px;
+			width: 94%;
+			right: -8px;
+			background: #363636;
+			@include simple-transform($rotate: -1.5deg);
+		}
+
+	}
+}
+
+
+
+
+
+
+
+h1,h2,h3,h4,h5 {
+	color: white;
+}
+
+#container {
+	
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+	&.slide-2 {
+
+		#slide-1 {
+			@include translate3d( -100%,0,0 );		
+		}
+		#slide-2 {
+			@include translate3d( 0,0,0 );		
+		}
+	}
+}
+
+.drag-functionality-area {
+	z-index: 0;
+}
+.view-container {
+	z-index: 1;
+}
+
+.slide {
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	
+	@include translate3d( 100%,0,0 );
+
+	@include transition-property( all );
+	@include transition-duration( .3s );
+	@include transition-timing-function( ease-in-out ); 
+
+	&#slide-1 {
+		@include translate3d( 0,0,0 );		
+	}
+}
+
+#slide-2 {
+	ul {
+		margin: 0;
+		padding: 0;
+		height: 100%;
+	}
+	li {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+
+		visibility: hidden;
+
+		&:nth-of-type(2) {
+			visibility: visible;
+		}
+	}
+}
+
+
+
+
